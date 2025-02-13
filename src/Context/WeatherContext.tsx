@@ -80,10 +80,10 @@ const WeatherProvider = ({ children }: { children: ReactNode }) => {
       const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
       // Format daily forecast
-      const dailyForecast = dayNames.map((day, index) => ({
-        day: dayNames[(today.getDay() + index) % 7],
-        temperature: Math.round(weatherData.main.temp + index * 2), // Simulated forecast
-        condition: index === 0 ? "Sunny" : index % 2 === 0 ? "Cloudy" : "Rainy", // Placeholder
+      const dailyForecast = dayNames.map((_, index) => ({
+        day: dayNames[(today.getDay() + index) % 7], // Correct usage
+        temperature: Math.round(weatherData.main.temp + index * 2),
+        condition: index === 0 ? "Sunny" : index % 2 === 0 ? "Cloudy" : "Rainy",
       }));
 // Format hourly forecast
 const currentDateTime = new Date();
