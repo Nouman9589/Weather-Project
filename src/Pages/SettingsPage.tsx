@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const SettingsPage = () => {
   const [temperatureUnit, setTemperatureUnit] = useState("Celsius");
@@ -32,7 +32,7 @@ const SettingsPage = () => {
                 <div className="relative w-full">
                   <div className="w-full h-12 bg-gray-700/30 rounded-xl p-1">
                     <div className="relative h-full flex">
-                      {options.map((option, optIndex) => (
+                      {options.map((option) => (
                         <button
                           key={option}
                           onClick={() => setUnit(option)}
