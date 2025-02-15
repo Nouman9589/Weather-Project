@@ -13,13 +13,22 @@ import { FaSun, FaCloud, FaCloudRain } from "react-icons/fa";
 const CitiesPage = () => {
   const { fetchWeather } = useWeather();
   const [cityInput, setCityInput] = useState("");
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    // Load favorites from localStorage if available
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
   const [selectedCity, setSelectedCity] = useState<string | null>("Mingora");
   const [selectedCityWeather, setSelectedCityWeather] = useState<any | null>(
     null
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Update localStorage whenever favorites change
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const getWeatherIcon = (condition: string | undefined) => {
     if (!condition)

@@ -5,7 +5,7 @@ import { useAuth } from "../Context/AuthContext";
 
 const Getstarted = () => {
   const { user, signInWithGoogle } = useAuth(); 
-  const { logOut } = useAuth(); // Access the logOut function
+  const { logOut } = useAuth(); 
 console.log(user);
 
   return (
